@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/my/my",
+    "pages/book/book"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "影社",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#c9c9c9",
+    "backgroundColor": "#fff",
+    "selectedColor": "#000",
+    "list": [{
+      "text": "流行",
+      "pagePath": "pages/index/index",
+      "iconPath": "/images/tab/classic.png",
+      "selectedIconPath": "/images/tab/classic@highlight.png"
+    }, {
+      "text": "书单",
+      "pagePath": "pages/book/book",
+      "iconPath": "/images/tab/book.png",
+      "selectedIconPath": "/images/tab/book@highlight.png"
+    }, {
+      "text": "喜欢",
+      "pagePath": "pages/my/my",
+      "iconPath": "/images/tab/my.png",
+      "selectedIconPath": "/images/tab/my@highlight.png"
+    }]
+  }
+}
