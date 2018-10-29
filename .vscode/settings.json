@@ -1,0 +1,12 @@
+{
+    "prettier.singleQuote": true,
+    "vetur.format.defaultFormatter.html": "js-beautify-html",
+    "vetur.format.defaultFormatterOptions": {
+        "wrap_attributes": "force-aligned"
+    },
+    "beautify.config": {
+        "brace_style": "collapse,preserve-inline"
+    },
+    "workbench.quickOpen.closeOnFocusLost": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false
+}
