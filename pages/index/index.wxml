@@ -1,6 +1,7 @@
 <!--index.wxml-->
 <view class="index-container">
     <view class="header">
+        <v-publish-date index="{{classic.index}}"></v-publish-date>
         <v-like count="{{classic.fav_nums}}" isLike="{{classic.like_status}}" bind:like="onLike"></v-like>
     </view>
     <view class="content">

@@ -9,7 +9,6 @@ Page({
     onLoad() {
         classicModel.getClassicLatest((res) => {
             console.log(res);
-
             this.setData({
                 classic: res
             })
