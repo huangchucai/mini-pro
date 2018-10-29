@@ -1,0 +1,12 @@
+<!--components/publishDate/index.wxml-->
+<view class="publish_container">
+    <view class="weekly">
+        <text class="placeHolder">No.</text>
+        <text class="index">{{_index}}</text>
+        <view class="vertical-line"></view>
+    </view>
+    <view class="date">
+        <text class="month">十月</text>
+        <text class="year">2018</text>
+    </view>
+</view>
