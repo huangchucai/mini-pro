@@ -29,8 +29,6 @@ Component({
         isLike: !this.data.isLike,
         count
       });
-      console.log(this.data.isLike);
-
       this.triggerEvent('like', {
         behavior: this.data.isLike ? 'cancel' : 'like'
       })

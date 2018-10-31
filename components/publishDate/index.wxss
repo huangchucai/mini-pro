@@ -1,24 +1,25 @@
 /* components/publishDate/index.wxss */
 .publish_container {
     display: flex;
-    line-height: 30px;
+    line-height: 60rpx;
 }
 .weekly {
     display: flex;
     align-items: baseline
 }
 .placeHolder {
-    font-size: 16px;
+    font-size: 32rpx;
 }
 .index {
     font-weight: 800;
-    font-size: 30px;
-    margin-right: 7px;
+    font-size: 60rpx;
+    margin-right: 14rpx;
+    line-height: 60rpx;
 }
 .vertical-line {
-    height: 22px;
+    height: 44rpx;
     border-left: 1px solid black;
-    margin-right: 7px;
+    margin-right: 14rpx;
 }
 .date {
     display: flex;
@@ -26,10 +27,10 @@
     justify-content: center;
 }
 .month {
-    font-size: 12px;
-    line-height: 12px;
+    font-size: 24rpx;
+    line-height: 24rpx;
 }
 .year {
-    font-size: 10px;
-    line-height: 10px;
+    font-size: 20rpx;
+    line-height: 20rpx;
 }
