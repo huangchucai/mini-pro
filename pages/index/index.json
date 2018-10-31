@@ -1,7 +1,9 @@
 {
     "usingComponents": {
         "v-like": "/components/like/index",
-        "v-moive": "/components/classic/movie/index",
+        "v-movie": "/components/classic/movie/index",
+        "v-music": "/components/classic/music/index",
+        "v-artical": "/components/classic/artical/index",
         "v-publish-date": "/components/publishDate/index",
         "v-nav": "/components/navi/index"
     }

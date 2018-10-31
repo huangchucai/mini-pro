@@ -5,7 +5,7 @@
         <v-like class="like" count="{{classic.fav_nums}}" isLike="{{classic.like_status}}" bind:like="onLike"></v-like>
     </view>
     <view class="content">
-        <v-moive content="{{classic.content}}" backgroundImg="{{classic.image}}"></v-moive>
+        <v-movie content="{{classic.content}}" backgroundImg="{{classic.image}}"></v-movie>
     </view>
 <v-nav class="nav" title="{{classic.title}}" first="{{first}}" latest="{{latest}}" bind:goToNextClassic="goToNextClassic" bind:goToPreClassic="goToPreClassic"></v-nav>
 </view>
