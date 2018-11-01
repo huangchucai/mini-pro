@@ -2,7 +2,7 @@
 <view class="container">
     <view class="header">
         <v-publish-date class="publish-date" index="{{classic.index}}"></v-publish-date>
-        <v-like class="like" count="{{classic.fav_nums}}" isLike="{{classic.like_status}}" bind:like="onLike"></v-like>
+        <v-like class="like" count="{{fav_nums}}" isLike="{{like_status}}" bind:like="onLike"></v-like>
     </view>
     <view class="content">
         <v-movie content="{{classic.content}}" backgroundImg="{{classic.image}}"></v-movie>

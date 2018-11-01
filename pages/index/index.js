@@ -10,6 +10,7 @@ Page({
     },
     onLoad() {
         classicModel.getClassicLatest((res) => {
+            this._getClassicLikeInfo(res.type, res.id)
             this.setData({
                 classic: res
             })
@@ -29,10 +30,20 @@ Page({
         classicModel.getClassic(this.data.classic.index, type, (res) => {
             const latest = classicModel.isLatest(res.index)
             const first = classicModel.isFirst(res.index)
+            this._getClassicLikeInfo(res.type, res.id)
             this.setData({
                 classic: res,
                 latest,
                 first
+            })
+        })
+    },
+    _getClassicLikeInfo(type, id) {
+        like.getClassicLikeStatus(type, id, (res) => {
+            const { fav_nums, like_status } = res
+            this.setData({
+                fav_nums,
+                like_status
             })
         })
     }

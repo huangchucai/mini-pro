@@ -7,13 +7,15 @@ class ClassicModle extends Http {
     getClassicLatest(callback) {
         this.request({
             url: `${this.prefix}/latest`,
-            success: (data) => {
-                this._saveLatestIndex(data.index)
-                callback(data)
+            success: (res) => {
+                this._saveLatestIndex(res.index)
+                const key = this._setStorageKey(res.index)
+                wx.setStorageSync(key, res)
+                callback(res)
             },
             // todo: 错误的处理
-            error: (data) => {
-                console.log(data);
+            error: (res) => {
+                console.log(res);
             }
         })
     }
@@ -24,11 +26,20 @@ class ClassicModle extends Http {
      * @param {function} success 成功回调
      */
     getClassic(index, preOrNext = 'next', success) {
+        const key = preOrNext === 'next' ? this._setStorageKey(index + 1) : this._setStorageKey(index-1)
         const url = `classic/${index}/${preOrNext}`
-        this.request({
-            url,
-            success
-        })
+        const classic = wx.getStorageSync(key)
+        if(classic) {
+            success(classic)
+        } else {
+            this.request({
+                url,
+                success: (res) => {
+                    wx.setStorageSync(key, res)
+                    success && success(res)
+                }
+            })
+        }
     }
     isFirst(index) {
         return !!(index === 1)
@@ -41,6 +52,9 @@ class ClassicModle extends Http {
     }
     _getLatestIndex() {
         return wx.getStorageSync('latest')
+    }
+    _setStorageKey(index) {
+        return `classic-${index}`
     }
 }
 export { ClassicModle }
