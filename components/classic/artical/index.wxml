@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="index_container">
+<view class="index_container" hidden="{{hidden}}">
     <image class="classic-img" src="{{backgroundImg}}" />
     <image class="tag" src="/images/artical/essay@tag.png" />
     <view class="classic-text">{{content}}</view>

@@ -5,7 +5,9 @@
         <v-like class="like" count="{{fav_nums}}" isLike="{{like_status}}" bind:like="onLike"></v-like>
     </view>
     <view class="content">
-        <v-movie content="{{classic.content}}" backgroundImg="{{classic.image}}"></v-movie>
+        <v-movie hidden="{{!(classic.type === 100)}}" content="{{classic.content}}" backgroundImg="{{classic.image}}"></v-movie>
+<v-music wx:if="{{classic.type === 200}}" content="{{classic.content}}" backgroundImg="{{classic.image}}" src="{{classic.url}}" title="{{classic.title}}"></v-music>
+        <v-artical hidden="{{!(classic.type === 300)}}" content="{{classic.content}}" backgroundImg="{{classic.image}}"></v-artical>
     </view>
-<v-nav class="nav" title="{{classic.title}}" first="{{first}}" latest="{{latest}}" bind:goToNextClassic="goToNextClassic" bind:goToPreClassic="goToPreClassic"></v-nav>
+    <v-nav class="nav" title="{{classic.title}}" first="{{first}}" latest="{{latest}}" bind:goToNextClassic="goToNextClassic" bind:goToPreClassic="goToPreClassic"></v-nav>
 </view>

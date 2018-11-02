@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="index_container">
-    <image class="classic-img" src="{{backgroundImg}}" />
-    <image class="player-img" src="{{palyStatus}}"></image>
+    <image class="classic-bg-img {{playStatus ? 'play-animation' : ''}}" src="{{backgroundImg}}" />
+    <image class="player-img" src="{{playStatus ? pauseImg : playImg}}" bind:tap="onPlay"></image>
     <image class="tag" src="../../../images/music/music@tag.png" />
     <view class="classic-text">{{content}}</view>
 </view>
