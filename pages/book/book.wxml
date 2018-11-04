@@ -1,6 +1,17 @@
 <!--logs.wxml-->
 <view class="container">
-    <view class="books-container">
-        <v-book wx:for="{{books}}" wx:index="index" wx:key="{{index}}" book="{{item}}" class="book"></v-book>
+    <view class="header">
+        <view class='box' bind:tap="onActivateSearch">
+            <image src="/images/book/search.png" />
+            <text>搜索书籍</text>
+        </view>
+    </view>
+    <view class="sub-container">
+        <image class="head-img" src="/images/book/quality.png" />
+        <view class="books-container">
+            <block wx:for="{{books}}" wx:key="id">
+                <v-book book="{{item}}" class="book"></v-book>
+            </block>
+        </view>
     </view>
 </view>
