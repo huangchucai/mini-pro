@@ -1,0 +1,9 @@
+<!--components/book/index.wxml-->
+<view class="container">
+    <image class="container-bg" src="{{book.image}}"></image>
+    <view class="describe">
+        <view class="title ellipsis">{{book.title}}</view>
+        <view class="author ellipsis">{{book.author}}</view>
+        <view class="likeCount ellipsis">{{book.fav_nums}} 喜欢</view>
+    </view>
+</view>

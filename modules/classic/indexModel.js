@@ -1,22 +1,17 @@
-import {Http} from '../../utils/http'
+import { Http } from '../../utils/http'
 class ClassicModle extends Http {
     prefix = 'classic'
     constructor() {
         super()
     }
-    getClassicLatest(callback) {
-        this.request({
+    getClassicLatest() {
+        return this.request({
             url: `${this.prefix}/latest`,
-            success: (res) => {
-                this._saveLatestIndex(res.index)
-                const key = this._setStorageKey(res.index)
-                wx.setStorageSync(key, res)
-                callback(res)
-            },
-            // todo: 错误的处理
-            error: (res) => {
-                console.log(res);
-            }
+        }).then(res => {
+            this._saveLatestIndex(res.index)
+            const key = this._setStorageKey(res.index)
+            wx.setStorageSync(key, res)
+            return Promise.resolve(res)
         })
     }
     /**
@@ -25,19 +20,18 @@ class ClassicModle extends Http {
      * @param {string} preOrNext previous/next
      * @param {function} success 成功回调
      */
-    getClassic(index, preOrNext = 'next', success) {
-        const key = preOrNext === 'next' ? this._setStorageKey(index + 1) : this._setStorageKey(index-1)
+    getClassic(index, preOrNext = 'next') {
+        const key = preOrNext === 'next' ? this._setStorageKey(index + 1) : this._setStorageKey(index - 1)
         const url = `classic/${index}/${preOrNext}`
         const classic = wx.getStorageSync(key)
-        if(classic) {
-            success(classic)
+        if (classic) {
+            return Promise.resolve(classic)
         } else {
-            this.request({
+            return this.request({
                 url,
-                success: (res) => {
-                    wx.setStorageSync(key, res)
-                    success && success(res)
-                }
+            }).then(res => {
+                wx.setStorageSync(key, res)
+                return Promise.resolve(res)
             })
         }
     }

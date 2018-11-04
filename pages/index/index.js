@@ -9,7 +9,7 @@ Page({
         latest: true
     },
     onLoad() {
-        classicModel.getClassicLatest((res) => {
+        classicModel.getClassicLatest().then(res => {
             this._getClassicLikeInfo(res.type, res.id)
             this.setData({
                 classic: res
@@ -27,7 +27,7 @@ Page({
         this._getClassic('next')
     },
     _getClassic(type = 'previous') {
-        classicModel.getClassic(this.data.classic.index, type, (res) => {
+        classicModel.getClassic(this.data.classic.index, type).then(res => {
             const latest = classicModel.isLatest(res.index)
             const first = classicModel.isFirst(res.index)
             this._getClassicLikeInfo(res.type, res.id)
@@ -39,7 +39,7 @@ Page({
         })
     },
     _getClassicLikeInfo(type, id) {
-        like.getClassicLikeStatus(type, id, (res) => {
+        like.getClassicLikeStatus(type, id).then(res => {
             const { fav_nums, like_status } = res
             this.setData({
                 fav_nums,

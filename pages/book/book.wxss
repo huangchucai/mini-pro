@@ -1,8 +1,9 @@
-.log-list {
+.books-container {
+  padding: 0 90rpx;
   display: flex;
-  flex-direction: column;
-  padding: 40rpx;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
-.log-item {
-  margin: 10rpx;
+.book {
+  margin: 30rpx 0rpx;
 }

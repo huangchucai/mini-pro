@@ -6,9 +6,8 @@ class Like extends Http {
     getClassicLikeStatus(type, id, success) {
         const params = {
             url: `classic/${type}/${id}/favor`,
-            success: success
         }
-        this.request(params)
+        return this.request(params)
     }
     /**
      *
