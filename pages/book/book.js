@@ -5,9 +5,7 @@ Page({
         books: []
     },
     onLoad() {
-        bookModel.getBooks({
-            url: 'hot_list'
-        }).then(res => {
+        bookModel.getBooks().then(res => {
             this.setData({
                 books: res
             })

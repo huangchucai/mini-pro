@@ -1,5 +1,5 @@
 <!--components/book/index.wxml-->
-<view class="container">
+<view class="container" bind:tap="goToDetail">
     <image class="container-bg" src="{{book.image}}"></image>
     <view class="describe">
         <view class="title ellipsis">{{book.title}}</view>

@@ -4,8 +4,28 @@ class BookModel extends Http {
     constructor() {
         super()
     }
-    getBooks(params = {}) {
-        params.url = this.prefix + params.url
+    getBooks() {
+        const params = {
+            url: this.prefix + 'hot_list'
+        }
+        return this.request(params)
+    }
+    getBookDetail(id) {
+        const params = {
+            url: this.prefix + `${id}/detail`
+        }
+        return this.request(params)
+    }
+    getBookLikeInfo() {
+        const params = {
+            url: this.prefix + 'favor/count'
+        }
+        return this.request(params)
+    }
+    getBookShortComment(id) {
+        const params = {
+            url: this.prefix + `${id}/short_comment`
+        }
         return this.request(params)
     }
 }
