@@ -1,11 +1,10 @@
-// components/tag/index.js
+// components/v-mark/index.js
 Component({
   /**
    * 组件的属性列表
    */
-  externalClasses: ['bg-color'],
   properties: {
-    text: String
+
   },
 
   /**
@@ -19,10 +18,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onTap() {
-      this.triggerEvent('tagAddComment', {
-        content: this.data.text
-      })
+    hidePost() {
+      this.triggerEvent('hidePost')
     }
   }
 })

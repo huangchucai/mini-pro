@@ -1,5 +1,5 @@
 <!--components/tag/index.wxml-->
-<view bind:tap="onTap" class='container tag-class'>
+<view bind:tap="onTap" class='container bg-color'>
     <text>{{text}}</text>
     <slot class="after"></slot>
 </view>

@@ -1,0 +1,2 @@
+<!--components/v-mark/index.wxml-->
+<view class="container" bind:tap="hidePost"></view>

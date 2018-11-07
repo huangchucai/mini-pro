@@ -18,12 +18,15 @@ class Http {
                         resolve && resolve(res.data)
                     } else {
                         reject()
-                        error && error(res)
+                        wx.showToast({
+                            title: '网络异常',
+                            icon: 'none'
+                        })
                     }
                 },
                 fail: (res) => {
                     reject()
-                    fail && fail(res)
+                    // fail && fail(res)
                 }
             })
         })

@@ -1,0 +1,24 @@
+var filter = function(text) {
+    if(!text) return;
+    var reg = getRegExp('\\\\n', 'g');
+    return text.replace(reg, '\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+}
+
+var slice = function(arr, length) {
+    return arr.slice(0, length)
+}
+
+var changeColor = function(index) {
+    if(index === 0) {
+        return 'tag-color'
+    }
+    if ( index === 1) {
+        return 'tag-color2'
+    }
+    return ''
+}
+module.exports = {
+    filter:filter,
+    slice: slice,
+    changeColor: changeColor
+}

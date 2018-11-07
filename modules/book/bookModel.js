@@ -1,6 +1,6 @@
 import { Http } from '../../utils/http'
 class BookModel extends Http {
-    prefix = '/book/'
+    prefix = 'book/'
     constructor() {
         super()
     }
@@ -16,9 +16,9 @@ class BookModel extends Http {
         }
         return this.request(params)
     }
-    getBookLikeInfo() {
+    getBookLikeInfo(id) {
         const params = {
-            url: this.prefix + 'favor/count'
+            url: this.prefix + `${id}/favor`
         }
         return this.request(params)
     }
