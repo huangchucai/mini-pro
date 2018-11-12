@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "hcc影射",
   "usingComponents": {
-    "v-book": "/components/book/index"
+    "v-book": "/components/book/index",
+    "v-search": "/components/searchList/index"
   }
 }

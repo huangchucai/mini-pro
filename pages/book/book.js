@@ -1,14 +1,38 @@
-import { BookModel } from '../../modules/book/bookModel'
-const bookModel = new BookModel()
+import {BookModel} from '../../modules/book/bookModel';
+import {randomString} from '../../utils/util';
+
+const bookModel = new BookModel();
 Page({
     data: {
-        books: []
+        books: [],
+        showSearchPanel: false,
+        more: null
     },
     onLoad() {
-        bookModel.getBooks().then(res => {
+        const booksPromiseInstance = bookModel.getBooks();
+        const searchHotKeyPromiseInstance = bookModel.getHotKeys();
+        Promise.all([booksPromiseInstance, searchHotKeyPromiseInstance]).then(resArr => {
+            const [books, searchHotKey] = resArr;
             this.setData({
-                books: res
-            })
-        })
+                books,
+                searchHotKey: searchHotKey.hot
+            });
+        });
+    },
+    onActivateSearch() {
+        this.setData({
+            showSearchPanel: true
+        });
+    },
+    onCancel() {
+        this.setData({
+            showSearchPanel: false
+        });
+    },
+    // 触底
+    onReachBottom() {
+        this.setData({
+            more: randomString(15)
+        });
     }
-})
+});

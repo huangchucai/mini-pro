@@ -54,13 +54,13 @@
     <v-mark bind:hidePost="onCancel"></v-mark>
     <view class="posting-container">
         <view class="post-header">
-            <text wx:if="{{!(comments==false)}}">仅可点击标签+1</text>
+            <text wx:if="{{!noComment}}">仅可点击标签+1</text>
             <text wx:else>暂无短评</text>
             <text class="cancel" bind:tap="onCancel">取消</text>
         </view>
         <view class="comment-container">
             <block wx:for="{{util.slice(comments,3)}}" wx:key="">
-                <v-tag class="tag" text="{{item.content}}" bg-color="{{util.changeColor(index)}}" bind:tagAddComment="onPost">
+                <v-tag class="tag" text="{{item.content}}" bg-color="{{util.changeColor(index)}}" bind:onTaping="onPost">
                     <text class="num">{{'+' + item.nums}}</text>
                 </v-tag>
             </block>

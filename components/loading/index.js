@@ -1,11 +1,10 @@
-// components/tag/index.js
+// components/loading/index.js
 Component({
   /**
    * 组件的属性列表
    */
-  externalClasses: ['bg-color'],
   properties: {
-    text: String
+
   },
 
   /**
@@ -19,10 +18,6 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onTap() {
-      this.triggerEvent('onTaping', {
-        content: this.data.text
-      })
-    }
+
   }
 })

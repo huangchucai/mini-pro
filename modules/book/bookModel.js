@@ -28,5 +28,10 @@ class BookModel extends Http {
         }
         return this.request(params)
     }
+    getHotKeys() {
+        return this.request({
+            url: '/book/hot_keyword'
+        })
+    }
 }
 export { BookModel }

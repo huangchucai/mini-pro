@@ -71,3 +71,6 @@ type（必需）、scope（可选）和subject（必需）
 基于：[AlloyTeam ESLint 规则](https://alloyteam.github.io/eslint-config-alloy/)
 完整规则：[ESLint Rules](https://eslint.org/docs/rules/)
 - 通过./node_modules/.bin/eslint --fix fulishe/pages/index/indexjs 自动修复可修复的问题
+
+### 总结
+1. 组件的封装一定不要和业务接口和代码组合到一起，一般用传参的形式接受接口数据
