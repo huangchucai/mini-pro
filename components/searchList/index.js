@@ -1,16 +1,18 @@
 // components/searchList/index.js
-import {SearchModel} from '../../modules/searchList/searchModel';
+import { SearchModel } from '../../modules/searchList/searchModel';
+import { pagination } from '../../modules/pagination'
 const searchModel = new SearchModel();
 
 Component({
     /**
      * 组件的属性列表
      */
+    behaviors: [pagination],
     properties: {
         hotKeys: Array,
         more: {
             type: String,
-            observer: '_loadMore'
+            observer: 'loadMore'
         }
     },
 
@@ -20,11 +22,10 @@ Component({
     data: {
         keyword: '',
         historyList: [],
-        searchList: [],
         searchFinished: false,
-        loading: false,
         loadingCenter: false,
-        start: 0
+        start: 0,
+        empty: false
     },
     attached() {
         const historyList = searchModel.getSearchHistory();
@@ -50,32 +51,46 @@ Component({
         onConfirm(e) {
             let value = e.detail.value || e.detail.content;
             if (!value) return;
+            this._showResult()
             this.initOriginData();
-            this.setData({
-                keyword: value,
-                searchFinished: true,
-                loadingCenter: true
-            });
             searchModel.setSearchHistory(value);
             searchModel.searchBook({
                 q: value
             }).then(res => {
+                this.setMoreData(res.books)
+                this.setTotal(res.total)
                 this.setData({
+                    keyword: value,
                     loadingCenter: false,
-                    searchList: res.books
                 });
             });
         },
-        initOriginData() {
-            this.data.start = 0;
-            this.data.searchList = [];
-            this.setData({
-                searchList: []
-            });
-        },
         // TODO 加载更多的数据
-        _loadMore(newVal) {
-            console.log(newVal);
+        loadMore(newVal) {
+            if (!this.hasMore()) {
+                return
+            }
+            if (this.data.loading) {
+                return
+            }
+            this.setData({
+                loading: true
+            })
+            searchModel.searchBook({
+                q: this.data.keyword,
+                start: this.getCurrentLength()
+            }).then(res => {
+                this.setMoreData(res.books)
+                this.setData({
+                    loading: false
+                })
+            })
+        },
+        _showResult() {
+            this.setData({
+                searchFinished: true,
+                loadingCenter: true
+            })
         }
     }
 });

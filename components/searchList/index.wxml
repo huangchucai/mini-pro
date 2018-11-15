@@ -1,10 +1,9 @@
 <view class="container">
     <view class="header">
         <view class="search-container">
-            <image class="icon" src="/images/searchList/search.png"/>
-            <input placeholder-class='in-bar' placeholder='书籍名' class='bar' bind:confirm="onConfirm" value="{{keyword}}"
-                   auto-focus="true"/>
-            <image bind:tap="onDelete" class="cancel-img" src="/images/searchList/cancel.png"/>
+            <image class="icon" src="/images/searchList/search.png" />
+            <input placeholder-class='in-bar' placeholder='书籍名' class='bar' bind:confirm="onConfirm" value="{{keyword}}" auto-focus="true" />
+            <image bind:tap="onDelete" class="cancel-img" src="/images/searchList/cancel.png" />
         </view>
         <view class='cancel' bind:tap="onCancel">取消</view>
     </view>
@@ -15,7 +14,7 @@
                 <text>历史搜索</text>
             </view>
             <view class="tags">
-                <v-tag bind:onTaping="onConfirm" wx:for="{{historyList}}" wx:key="" text="{{item}}"/>
+                <v-tag bind:onTaping="onConfirm" wx:for="{{historyList}}" wx:key="" text="{{item}}" />
             </view>
         </view>
         <view class="history hot-search">
@@ -24,13 +23,13 @@
                 <text>热门搜索</text>
             </view>
             <view class="tags">
-                <v-tag bind:onTaping="onConfirm" wx:for="{{hotKeys}}" wx:key="" text="{{item}}"/>
+                <v-tag bind:onTaping="onConfirm" wx:for="{{hotKeys}}" wx:key="" text="{{item}}" />
             </view>
         </view>
     </block>
 
-    <view class="books-container" wx:if="{{searchFinished && searchList && searchList.length }}">
-        <block wx:for="{{searchList}}" wx:key="{{item.id}}">
+<view class="books-container" wx:if="{{searchFinished && dataList && dataList.length }}">
+        <block wx:for="{{dataList}}" wx:key="{{item.id}}">
             <v-book show-like="{{false}}" book="{{item}}" class="book" />
         </block>
     </view>
