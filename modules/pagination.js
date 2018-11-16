@@ -3,12 +3,13 @@ const pagination = Behavior({
         dataList: [],
         total: null,
         loading: false,
+        empty: false
     },
     methods: {
         setMoreData(dataArray) {
             const tempArray = this.data.dataList.concat(dataArray)
             this.setData({
-                dataList: tempArray
+                dataList: tempArray,
             })
         },
         getCurrentLength() {
@@ -19,6 +20,11 @@ const pagination = Behavior({
         },
         setTotal(total) {
             this.data.total = total
+            if(total == 0) {
+                this.setData({
+                    empty: true
+                })
+            }
         },
         isLocked() {
             return
@@ -27,6 +33,7 @@ const pagination = Behavior({
             this.data.total = null
             this.setData({
                 dataList: [],
+                empty: false
             });
         }
     }

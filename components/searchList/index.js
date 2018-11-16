@@ -25,7 +25,6 @@ Component({
         searchFinished: false,
         loadingCenter: false,
         start: 0,
-        empty: false
     },
     attached() {
         const historyList = searchModel.getSearchHistory();
@@ -39,30 +38,34 @@ Component({
     methods: {
         // 清除输入的内容
         onDelete() {
-            this.setData({
-                keyword: '',
-                searchFinished: false
-            });
+            this.initOriginData();
+            this._closeResult()
         },
         // 返回书籍列表
         onCancel() {
+            this.initOriginData();
             this.triggerEvent('onCancel', {});
         },
         onConfirm(e) {
             let value = e.detail.value || e.detail.content;
             if (!value) return;
             this._showResult()
-            this.initOriginData();
+            this._showLoadingCenter()
+            this.setData({
+                keyword: value,
+            });
             searchModel.setSearchHistory(value);
             searchModel.searchBook({
                 q: value
             }).then(res => {
                 this.setMoreData(res.books)
                 this.setTotal(res.total)
+                this._hideLoadingCenter()
+            }, () => {
                 this.setData({
-                    keyword: value,
+                    empty: true,
                     loadingCenter: false,
-                });
+                })
             });
         },
         // TODO 加载更多的数据
@@ -70,26 +73,52 @@ Component({
             if (!this.hasMore()) {
                 return
             }
-            if (this.data.loading) {
+            if (this.isLocked()) {
                 return
             }
-            this.setData({
-                loading: true
-            })
+            this.locked()
             searchModel.searchBook({
                 q: this.data.keyword,
                 start: this.getCurrentLength()
             }).then(res => {
                 this.setMoreData(res.books)
-                this.setData({
-                    loading: false
-                })
+                this.unLocked()
+            }, () => {
+                this.unLocked()
             })
         },
         _showResult() {
             this.setData({
-                searchFinished: true,
+                searchFinished: true
+            })
+        },
+        _closeResult() {
+            this.setData({
+                searchFinished: false,
+                keyword: ''
+            })
+        },
+        _showLoadingCenter() {
+            this.setData({
                 loadingCenter: true
+            })
+        },
+        _hideLoadingCenter() {
+            this.setData({
+                loadingCenter: false
+            })
+        },
+        isLocked() {
+            return !!this.data.loading
+        },
+        locked() {
+            this.setData({
+                loading: true
+            })
+        },
+        unLocked() {
+            this.setData({
+                loading: false
             })
         }
     }

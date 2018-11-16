@@ -28,11 +28,12 @@
         </view>
     </block>
 
-<view class="books-container" wx:if="{{searchFinished && dataList && dataList.length }}">
+    <view class="books-container" wx:if="{{searchFinished && dataList && dataList.length }}">
         <block wx:for="{{dataList}}" wx:key="{{item.id}}">
             <v-book show-like="{{false}}" book="{{item}}" class="book" />
         </block>
     </view>
     <v-loading class="loading" wx:if="{{loading}}" />
     <v-loading class="loading-center" wx:if="{{loadingCenter}}" />
+    <text wx:if="{{empty}}" class="empty-tip">没有搜索到书籍</text>
 </view>
