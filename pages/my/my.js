@@ -20,5 +20,9 @@ Page({
         this.setData({
             logs: this.data.logs
         })
+    },
+    onGetUserInfo(info) {
+        console.log(info);
+
     }
 })

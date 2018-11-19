@@ -1,6 +1,6 @@
 {
-  "navigationBarTitleText": "查看启动日志",
+  "navigationBarTitleText": "喜欢",
   "usingComponents" : {
-    "v-book" : "/components/book/index"
+    "image-button" : "/components/imageButton/index"
   }
 }

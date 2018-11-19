@@ -20,7 +20,7 @@ const pagination = Behavior({
         },
         setTotal(total) {
             this.data.total = total
-            if(total == 0) {
+            if (total == 0) {
                 this.setData({
                     empty: true
                 })
@@ -35,6 +35,19 @@ const pagination = Behavior({
                 dataList: [],
                 empty: false
             });
+        },
+        isLocked() {
+            return !!this.data.loading
+        },
+        locked() {
+            this.setData({
+                loading: true
+            })
+        },
+        unLocked() {
+            this.setData({
+                loading: false
+            })
         }
     }
 })

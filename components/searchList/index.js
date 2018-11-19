@@ -107,19 +107,6 @@ Component({
             this.setData({
                 loadingCenter: false
             })
-        },
-        isLocked() {
-            return !!this.data.loading
-        },
-        locked() {
-            this.setData({
-                loading: true
-            })
-        },
-        unLocked() {
-            this.setData({
-                loading: false
-            })
         }
     }
 });

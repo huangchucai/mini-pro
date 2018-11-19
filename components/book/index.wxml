@@ -4,6 +4,6 @@
     <view class="describe">
         <view class="title ellipsis">{{book.title}}</view>
         <view class="author ellipsis">{{book.author}}</view>
-        <view class="likeCount ellipsis">{{book.fav_nums}} 喜欢</view>
+        <view wx:if="{{!hideLookInfo}}" class="likeCount ellipsis">{{book.fav_nums}} 喜欢</view>
     </view>
 </view>

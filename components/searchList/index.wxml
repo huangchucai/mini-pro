@@ -30,7 +30,7 @@
 
     <view class="books-container" wx:if="{{searchFinished && dataList && dataList.length }}">
         <block wx:for="{{dataList}}" wx:key="{{item.id}}">
-            <v-book show-like="{{false}}" book="{{item}}" class="book" />
+            <v-book show-like="{{false}}" book="{{item}}" hideLookInfo="{{true}}" class="book" />
         </block>
     </view>
     <v-loading class="loading" wx:if="{{loading}}" />
